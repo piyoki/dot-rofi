@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 wallpaper_dir="$HOME/Pictures/wallpapers/"
 theme="$HOME/.config/rofi/conf/launcher.rasi"
