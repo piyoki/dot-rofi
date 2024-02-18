@@ -1,0 +1,7 @@
+#!/bin/sh
+
+theme="$HOME/.config/rofi/conf/launcher.rasi"
+
+pass=$(gopass ls --flat | rofi -p "gopass" -theme $theme -dmenu -i -selected-row 0)
+
+gopass show -c $pass
