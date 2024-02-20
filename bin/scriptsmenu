@@ -1,0 +1,7 @@
+#!/bin/sh
+
+theme="$HOME/.config/rofi/conf/launcher.rasi"
+
+script=$(ls $HOME/.local/scripts/ | xargs -n 1 | rofi -p "scripts" -theme $theme -dmenu -i -selected-row 0)
+
+$script
