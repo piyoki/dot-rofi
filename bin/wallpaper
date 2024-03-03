@@ -1,6 +1,6 @@
 #!/bin/sh
 
-wallpaper_dir="$HOME/Pictures/wallpapers/"
+wallpaper_dir="$HOME/Pictures/Wallpapers/"
 theme="$HOME/.config/rofi/conf/launcher.rasi"
 
 find_wallpapers(){
