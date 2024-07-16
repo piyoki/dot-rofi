@@ -1,0 +1,7 @@
+#!/bin/sh
+
+theme="$HOME/.config/rofi/conf/launcher.rasi"
+
+profile=$(cat /sys/firmware/acpi/platform_profile_choices | xargs -n 1 | rofi -p "profiles" -theme $theme -dmenu -i -selected-row 0)
+
+echo $profile | sudo tee /sys/firmware/acpi/platform_profile
