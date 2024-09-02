@@ -4,6 +4,8 @@ theme="$HOME/.config/rofi/conf/launcher.rasi"
 on_icon="/usr/share/icons/Papirus-Dark/48x48/status/camera-on.svg"
 off_icon="/usr/share/icons/Papirus-Dark/48x48/status/camera-off.svg"
 output="$HOME/Downloads/outputs_$(date +"%Y-%m-%d-%H:%M:%S").mp4"
+program=wf-recorder
+active_monitor=$(hyprctl activeworkspace | grep -oP "on monitor \K[^:]+")
 
 # Options
 screen="Capture Screen"
@@ -17,14 +19,14 @@ chosen=$(echo -e "$options" | rofi -p "screen-recorder" -theme $theme -dmenu -i 
 case "$chosen" in
 $screen)
   notify-send "Screen recoding" "started" --icon=$off_icon
-  wl-screenrec -o DP-6 --codec hevc --encode-pixfmt vuyx -f $output
+  $program -o $active_monitor -f $output
   ;;
 $region)
   notify-send "Screen recoding" "started" --icon=$off_icon
-  wl-screenrec -g "$(slurp)" -f $output
+  $program -g "$(slurp)" -f $output
   ;;
 $stop)
   notify-send "Screen recoding" "stopped" --icon=$off_icon
-  pkill -f wl-screenrec
+  pkill $program
   ;;
 esac
