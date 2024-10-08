@@ -24,7 +24,7 @@ $suspend)
 $screenoff)
     $HOME/.local/scripts/dpmsoff ;;
 $lock)
-    swaylock -c 000000 ;;
+    hyprlock;;
 $reload)
     hyprctl reload ;;
 $logout)
