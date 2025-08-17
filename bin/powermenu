@@ -20,23 +20,34 @@ options="$suspend\n$screenoff\n$lock\n$reload\n$logout\n$poweroff\n$reboot\n$idl
 chosen="$(echo -e "$options" | rofi -p "powermenu" -theme $theme -dmenu -i -selected-row 0)"
 case $chosen in
 $suspend)
-    systemctl suspend ;;
+  hyprlock &
+  disown && systemctl suspend
+  ;;
 $screenoff)
-    $HOME/.local/scripts/dpmsoff ;;
+  $HOME/.local/scripts/dpmsoff
+  ;;
 $lock)
-    hyprlock;;
+  hyprlock
+  ;;
 $reload)
-    hyprctl reload ;;
+  hyprctl reload
+  ;;
 $logout)
-    pkill -9 -u $USER ;;
+  pkill -9 -u $USER
+  ;;
 $poweroff)
-    systemctl -i poweroff ;;
+  systemctl -i poweroff
+  ;;
 $reboot)
-    systemctl reboot ;;
+  systemctl reboot
+  ;;
 $idlestart)
-    $HOME/.config/hypr/scripts/autosleep.sh ;;
+  $HOME/.config/hypr/scripts/autosleep.sh
+  ;;
 $idlestop)
-    pkill swayidle ;;
+  pkill swayidle
+  ;;
 $cleantrash)
-    trash-empty -f ;;
+  trash-empty -f
+  ;;
 esac
