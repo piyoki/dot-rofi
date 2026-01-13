@@ -6,6 +6,7 @@ theme="$HOME/.config/rofi/conf/launcher.rasi"
 suspend="  Suspend"
 screenoff="  Screenoff"
 lock="  Lock"
+savesession="  Save Session"
 reload="  Reload"
 logout="󰗼  Logout"
 poweroff="  Power Off"
@@ -15,7 +16,7 @@ idlestop="󱫫  Swayidle stop"
 cleantrash="  Clean Trash"
 
 # Variable passed to rofi
-options="$suspend\n$screenoff\n$lock\n$reload\n$logout\n$poweroff\n$reboot\n$idlestart\n$idlestop\n$cleantrash"
+options="$suspend\n$screenoff\n$lock\n$savesession\n$reload\n$logout\n$poweroff\n$reboot\n$idlestart\n$idlestop\n$cleantrash"
 
 chosen="$(echo -e "$options" | rofi -p "powermenu" -theme $theme -dmenu -i -selected-row 0)"
 case $chosen in
@@ -28,6 +29,9 @@ $screenoff)
   ;;
 $lock)
   hyprlock
+  ;;
+$savesession)
+  hyprsession save
   ;;
 $reload)
   hyprctl reload
